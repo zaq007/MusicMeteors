@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMeteors", "MusicMeteors\MusicMeteors\MusicMeteors.csproj", "{1DACB44D-DBBE-4AB3-8F16-2D5862573F1B}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "MusicMeteorsContent", "MusicMeteors\MusicMeteorsContent\MusicMeteorsContent.contentproj", "{8CE91E75-A6CA-40FF-9928-7C0786C597DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "Menu\Menu\Menu.csproj", "{F578F848-B039-4C04-8FA3-95039845DB59}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "MenuContent", "Menu\MenuContent\MenuContent.contentproj", "{E4742A4B-13AC-41AD-8B0C-5E92E2E6515A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalHandlers", "GlobalHandlers\GlobalHandlers.csproj", "{84902B0E-7E48-4314-9160-3DD10950F613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core\Core.csproj", "{66F32CA7-C6B9-4D83-9944-0FB011E26C2E}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "CoreContent", "Core\CoreContent\CoreContent.contentproj", "{B2CFF451-40BA-4849-9629-965CEEF5DB38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DACB44D-DBBE-4AB3-8F16-2D5862573F1B}.Debug|x86.ActiveCfg = Debug|x86
+		{1DACB44D-DBBE-4AB3-8F16-2D5862573F1B}.Debug|x86.Build.0 = Debug|x86
+		{1DACB44D-DBBE-4AB3-8F16-2D5862573F1B}.Release|x86.ActiveCfg = Release|x86
+		{1DACB44D-DBBE-4AB3-8F16-2D5862573F1B}.Release|x86.Build.0 = Release|x86
+		{8CE91E75-A6CA-40FF-9928-7C0786C597DA}.Debug|x86.ActiveCfg = Debug|x86
+		{8CE91E75-A6CA-40FF-9928-7C0786C597DA}.Release|x86.ActiveCfg = Release|x86
+		{F578F848-B039-4C04-8FA3-95039845DB59}.Debug|x86.ActiveCfg = Debug|x86
+		{F578F848-B039-4C04-8FA3-95039845DB59}.Debug|x86.Build.0 = Debug|x86
+		{F578F848-B039-4C04-8FA3-95039845DB59}.Release|x86.ActiveCfg = Release|x86
+		{F578F848-B039-4C04-8FA3-95039845DB59}.Release|x86.Build.0 = Release|x86
+		{E4742A4B-13AC-41AD-8B0C-5E92E2E6515A}.Debug|x86.ActiveCfg = Debug|x86
+		{E4742A4B-13AC-41AD-8B0C-5E92E2E6515A}.Release|x86.ActiveCfg = Release|x86
+		{84902B0E-7E48-4314-9160-3DD10950F613}.Debug|x86.ActiveCfg = Debug|x86
+		{84902B0E-7E48-4314-9160-3DD10950F613}.Debug|x86.Build.0 = Debug|x86
+		{84902B0E-7E48-4314-9160-3DD10950F613}.Release|x86.ActiveCfg = Release|x86
+		{84902B0E-7E48-4314-9160-3DD10950F613}.Release|x86.Build.0 = Release|x86
+		{66F32CA7-C6B9-4D83-9944-0FB011E26C2E}.Debug|x86.ActiveCfg = Debug|x86
+		{66F32CA7-C6B9-4D83-9944-0FB011E26C2E}.Debug|x86.Build.0 = Debug|x86
+		{66F32CA7-C6B9-4D83-9944-0FB011E26C2E}.Release|x86.ActiveCfg = Release|x86
+		{66F32CA7-C6B9-4D83-9944-0FB011E26C2E}.Release|x86.Build.0 = Release|x86
+		{B2CFF451-40BA-4849-9629-965CEEF5DB38}.Debug|x86.ActiveCfg = Debug|x86
+		{B2CFF451-40BA-4849-9629-965CEEF5DB38}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
