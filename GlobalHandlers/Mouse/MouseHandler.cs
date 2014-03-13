@@ -10,7 +10,7 @@ namespace GlobalHandlers.Mouse
 {
     public static class MouseHandler
     {
-        static MouseState previous;
+        public static MouseState previous;
 
         public static event EventHandler<MouseAgrs> OnClick = delegate { };
 

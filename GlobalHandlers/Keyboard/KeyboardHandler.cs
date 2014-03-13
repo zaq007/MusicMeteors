@@ -24,7 +24,7 @@ namespace GlobalHandlers.Keyboard
             var pressed = new List<Keys>();
             var clicked = new List<Keys>();
             pressed = Current.Where(x => Previous.Contains(x)).ToList<Keys>();
-            clicked = Current.Where(x => !Previous.Contains(x)).ToList<Keys>();
+            clicked = Previous.Where(x => !Current.Contains(x)).ToList<Keys>();
             if (pressed.Count != 0 || clicked.Count != 0)
                 OnPress(null, new KeyboardEventArg(pressed, clicked));
             Previous = Current;

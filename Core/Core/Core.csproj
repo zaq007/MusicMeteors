@@ -115,9 +115,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
+    <Compile Include="Misc\Background.cs" />
     <Compile Include="Misc\TextureLoader.cs" />
     <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Objects\ObjectContainer.cs" />
+    <Compile Include="Objects\Player.cs" />
     <Compile Include="Particles\Particle.cs" />
     <Compile Include="Particles\ParticleController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

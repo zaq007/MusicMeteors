@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Diagnostics;
 using GlobalHandlers.Mouse;
 using GlobalHandlers.Keyboard;
+using Core.Misc;
 
 namespace MusicMeteors
 {
@@ -82,7 +83,6 @@ namespace MusicMeteors
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 core = null;
-                GC.Collect();
                 Menu.Return.Message = "OK";
                 GameState.setState("Menu");
             }
@@ -127,15 +127,31 @@ namespace MusicMeteors
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            RenderTarget2D render = new RenderTarget2D(GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            RenderTarget2D render1 = new RenderTarget2D(GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            GraphicsDevice.SetRenderTarget(render);
+            
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, TextureLoader.Std);
+            
             spriteBatch.Begin();
             switch (GameState.getState())
             {
                 case "Menu": menu.Draw(spriteBatch); break;
                 case "Game": core.Draw(spriteBatch); break;
-            }
+            }            
             spriteBatch.End();
-            // TODO: Add your drawing code here
 
+            GraphicsDevice.SetRenderTarget(render1);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, TextureLoader.Std);
+            spriteBatch.Draw(render, new Vector2(0, 0), Color.White);
+            spriteBatch.End();
+            GraphicsDevice.SetRenderTarget(null);
+            //TextureLoader.Bloom.Parameters[0].SetValue(render1);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, TextureLoader.Bloom);
+            spriteBatch.Draw(render1, new Vector2(0, 0), Color.White);
+            spriteBatch.End();
+            render.Dispose();
+            render1.Dispose();
             base.Draw(gameTime);
         }
     }

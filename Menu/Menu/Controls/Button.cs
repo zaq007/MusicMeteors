@@ -28,7 +28,7 @@ namespace Menu.Controls
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, Position, Color.White);
+            spriteBatch.Draw(Texture, new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height), null, Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 0);
         }
 
         public override void OnClick(object sender, MouseAgrs e)

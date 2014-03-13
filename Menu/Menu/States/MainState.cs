@@ -18,10 +18,11 @@ namespace Menu.States
             Controls.Add(new Controls.Button(TextureLoader.BtnNewGame, new Vector2(0, 0), delegate
                 {
                    OpenFileDialog dialog = new OpenFileDialog();
-                   dialog.Filter = "(*.mp3)|*.mp3";
+                   dialog.Filter = "(*.mp3)|*.mp3|(*.wav)|*.wav";
                    dialog.ShowDialog();
                    Return.Message = dialog.FileName;
                    MouseHandler.OnClick -= Controls[0].OnClick;
+                   dialog.Dispose();
                 }));
         }
 

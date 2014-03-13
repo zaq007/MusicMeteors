@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Core.Objects
 {
-    static class ObjectContainer
+    static public class ObjectContainer
     {
         static List<GameObject> Objects;
 
