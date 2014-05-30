@@ -30,6 +30,7 @@ namespace MusicMeteors
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 5 * 256;
+            graphics.PreferMultiSampling = true;
             IsMouseVisible = true;
         }
 
@@ -82,6 +83,8 @@ namespace MusicMeteors
             // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
+                if (core != null)
+                    core.Dispose();
                 core = null;
                 Menu.Return.Message = "OK";
                 GameState.setState("Menu");
@@ -100,6 +103,7 @@ namespace MusicMeteors
                     switch (msg)
                     {
                         case "OK": break;
+                        case "Exit": Exit(); break;
                         default:
                             var ctor = typeof(Song).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(string), typeof(string), typeof(int) }, null);
                             Song song = (Song)ctor.Invoke(new object[] { "name", msg, 0 });
@@ -113,7 +117,14 @@ namespace MusicMeteors
             else
             {
                 if (core != null)
-                    core.Update(gameTime);
+                {
+                    var msg = core.Update(gameTime);
+                    switch (msg)
+                    {
+                        case "DEAD": break;
+                        default: break;
+                    }
+                }
             }
             // TODO: Add your update logic here
 
@@ -136,8 +147,8 @@ namespace MusicMeteors
             spriteBatch.Begin();
             switch (GameState.getState())
             {
-                case "Menu": menu.Draw(spriteBatch); break;
-                case "Game": core.Draw(spriteBatch); break;
+                case "Menu": menu.Draw(spriteBatch, render); break;
+                case "Game": core.Draw(spriteBatch, render); break;
             }            
             spriteBatch.End();
 
@@ -146,7 +157,7 @@ namespace MusicMeteors
             spriteBatch.Draw(render, new Vector2(0, 0), Color.White);
             spriteBatch.End();
             GraphicsDevice.SetRenderTarget(null);
-            //TextureLoader.Bloom.Parameters[0].SetValue(render1);
+            TextureLoader.Bloom.Parameters[0].SetValue(render1);
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, TextureLoader.Bloom);
             spriteBatch.Draw(render1, new Vector2(0, 0), Color.White);
             spriteBatch.End();
