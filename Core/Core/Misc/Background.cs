@@ -10,7 +10,7 @@ namespace Core.Misc
 {
     static public class Background
     {
-        public static void Draw(SpriteBatch spriteBatch)
+        public static void Draw(SpriteBatch spriteBatch, RenderTarget2D render)
         {
             spriteBatch.Draw(TextureLoader.Background, new Vector2(0, 0), Color.WhiteSmoke);
         }

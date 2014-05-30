@@ -26,6 +26,17 @@ namespace Menu
                 return btnNewGame;
             }
         }
+
+        private static Texture2D btnExit;
+        public static Texture2D BtnExit
+        {
+            get
+            {
+                if (btnExit == null)
+                    btnExit = content.Load<Texture2D>("Exit");
+                return btnExit;
+            }
+        }
         
     }
 }

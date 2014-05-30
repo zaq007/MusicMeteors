@@ -25,9 +25,9 @@ namespace Menu.States
             States[Current].Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, RenderTarget2D render)
         {
-            States[Current].Draw(spriteBatch);
+            States[Current].Draw(spriteBatch, render);
         }
 
     }

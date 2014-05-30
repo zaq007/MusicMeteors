@@ -1,6 +1,6 @@
 sampler2D tex : register(S0);
 
-float PixelSize = 0.001;
+float PixelSize = 0.0005;
 
 // pixel shader function
 float4 main(float2 uv : TEXCOORD) : COLOR

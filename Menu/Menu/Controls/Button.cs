@@ -26,7 +26,7 @@ namespace Menu.Controls
             
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, RenderTarget2D render)
         {
             spriteBatch.Draw(Texture, new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height), null, Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 0);
         }

@@ -27,6 +27,39 @@ namespace Core.Misc
             }
         }
 
+        static Texture2D sparcle;
+        public static Texture2D Sparcle
+        {
+            get
+            {
+                if (sparcle == null)
+                    sparcle = content.Load<Texture2D>("Sparcle");
+                return sparcle;
+            }
+        }
+
+        static Texture2D meteor;
+        public static Texture2D Meteor
+        {
+            get
+            {
+                if (meteor == null)
+                    meteor = content.Load<Texture2D>("Meteor");
+                return meteor;
+            }
+        }
+
+        static Texture2D smoke;
+        public static Texture2D Smoke
+        {
+            get
+            {
+                if (smoke == null)
+                    smoke = content.Load<Texture2D>("Smoke");
+                return smoke;
+            }
+        }
+
         static Texture2D player;
         public static Texture2D Player
         {
@@ -49,6 +82,17 @@ namespace Core.Misc
             }
         }
 
+        static Texture2D gameOver;
+        public static Texture2D GameOver
+        {
+            get
+            {
+                if (gameOver == null)
+                    gameOver = content.Load<Texture2D>("GameOver");
+                return gameOver;
+            }
+        }
+
         static Effect std;
         public static Effect Std
         {
@@ -57,6 +101,20 @@ namespace Core.Misc
                 if (std == null)
                     std = content.Load<Effect>("std");
                 return std;
+            }
+        }
+
+        static Effect flex;
+        public static Effect Flex
+        {
+            get
+            {
+                if (flex == null)
+                {
+                    flex = content.Load<Effect>("Flex");
+
+                }
+                return flex;
             }
         }
 

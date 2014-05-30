@@ -19,6 +19,6 @@ namespace Menu.States
 
         public abstract void Update(GameTime gameTime);
 
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public abstract void Draw(SpriteBatch spriteBatch, RenderTarget2D render);
     }
 }

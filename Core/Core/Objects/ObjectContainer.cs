@@ -4,49 +4,73 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Core.Patterns;
 
 namespace Core.Objects
 {
-    static public class ObjectContainer
+    public class ObjectContainer : Pool<GameObject>
     {
-        static List<GameObject> Objects;
-
-        static ObjectContainer()
+        private static ObjectContainer instance;
+        public static ObjectContainer Instance
         {
-            Objects = new List<GameObject>();
+            get
+            {
+                if (instance == null)
+                    instance = new ObjectContainer();
+                return instance;
+            }
         }
 
-        public static IEnumerable<GameObject> GetElementsByTag(string tag)
+
+        List<GameObject> ForAdding;
+
+        ObjectContainer()
+            : base()
         {
-            return Objects.Where(x => x.Tag == tag);
+            ForAdding = new List<GameObject>();
         }
 
-        public static void Add(GameObject go)
+
+        public new void Add(GameObject a)
         {
-            Objects.Add(go);
+            ForAdding.Add(a);
+            return;
         }
 
-        public static void Insert(int index, GameObject go)
+        public List<GameObject> GetObjects()
         {
-            Objects.Insert(index, go);
+            return this;
         }
 
-        public static void Remove(GameObject go)
+        public IEnumerable<GameObject> GetElementsByTag(string tag)
         {
-            Objects.Remove(go);
+            return this.Where(x => x.Tag == tag);
         }
 
-        public static void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            for (int i = 0; i < Objects.Count; i++)
-                Objects[i].Update(gameTime);
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this[i].Free)
+                    continue;
+                this[i].Update(gameTime);
+            }
+            for (var a = 0; a < ForAdding.Count; a++ )
+            {
+                base.Add(ForAdding[a]);
+            }
+            ForAdding.Clear();
         }
 
-        public static void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, RenderTarget2D render)
         {
-            foreach (var a in Objects)
-                a.Draw(spriteBatch);
+            foreach (var a in this)
+                a.Draw(spriteBatch, render);
         }
 
+        internal void Dispose()
+        {
+            instance = null;
+        }
     }
 }

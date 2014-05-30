@@ -6,7 +6,7 @@ float BlurAmount = 0.005; // Defines the blurring magnitude
 float Time : TIME;
 
 int drunkLevel=1;
-int colorLevel = -1;
+int colorLevel = 0;
 
 sampler ImageSampler = sampler_state
 {

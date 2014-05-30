@@ -9,42 +9,40 @@ using Core.Particles;
 using Microsoft.Xna.Framework.Input;
 using Core.Misc;
 using Core.Objects;
+using Core.Controllers;
 
 namespace Core
 {
     public class Core
     {
-        Song Song;
-        ParticleController particleController;
+        static public Song Song;
+
         public Core(Song song)
         {
-            particleController = new ParticleController();
             Song = song;
-            MediaPlayer.Play(Song);
-            MediaPlayer.IsVisualizationEnabled = true;
-            ObjectContainer.Add(new Player());
+            ObjectContainer.Instance.Add(new Player());
+            //ObjectContainer.Instance.Add(new Meteor(new Vector2(100, 100)));
         }
 
         public string Update(GameTime gameTime)
         {
-            VisualizationData vd = new VisualizationData();
-            MediaPlayer.GetVisualizationData(vd);
-            TextureLoader.Std.Parameters[0].SetValue(((vd.Samples.Average()<0)?0:vd.Samples.Average())+vd.Samples.Max());
-            for (int i = 0; i < 256; i++)
-            {
-                particleController.Beat(new Vector2(5 * i, 100), vd.Samples[i]);
-                particleController.Beat(new Vector2(5 * i, 300), vd.Frequencies[i]);
-            }
-            particleController.Update(gameTime);
-            ObjectContainer.Update(gameTime);
-            return "OK";
+            Return.Message = "OK";
+            MainController.Instance.Update(gameTime);
+            ObjectContainer.Instance.Update(gameTime);
+            return Return.Message;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, RenderTarget2D render)
         {
-            Background.Draw(spriteBatch);
-            ObjectContainer.Draw(spriteBatch);
-            particleController.Draw(spriteBatch);
+            Background.Draw(spriteBatch, render);
+            MainController.Instance.Draw(spriteBatch, render);
+            ObjectContainer.Instance.Draw(spriteBatch, render);
+        }
+
+        public void Dispose()
+        {
+            MainController.Instance.Dispose();
+            ObjectContainer.Instance.Dispose();
         }
     }
 }

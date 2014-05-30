@@ -28,9 +28,9 @@ namespace Menu
             return Return.Message;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, RenderTarget2D render)
         {
-            States.Draw(spriteBatch);
+            States.Draw(spriteBatch, render);
         }
     }
 }

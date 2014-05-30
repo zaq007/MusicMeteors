@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Core.Patterns;
 
 namespace Core.Particles
 {
-    public class Particle
+    public class Particle : IPoolable
     {
 
         public Texture2D Texture { get; set; }        // Текстура нашей частички
@@ -20,6 +21,7 @@ namespace Core.Particles
         public float SizeVel { get; set; }		// Скорость уменьшения размера
         public float AlphaVel { get; set; }		// Скорость уменьшения альфы
         public int TTL { get; set; }                // Время жизни частички
+        public bool Free { get; set; }
 
         public Particle(Texture2D texture, Vector2 position, Vector2 velocity,
             float angle, float angularVelocity, Vector4 color, float size, int ttl, float sizeVel, float alphaVel) // конструктор
@@ -34,6 +36,12 @@ namespace Core.Particles
             SizeVel = sizeVel;
             AlphaVel = alphaVel;
             TTL = ttl;
+            Free = false;
+        }
+
+        public Particle()
+        {
+            Free = true;
         }
 
         public void Update(GameTime gameTime) // цикл обновления
@@ -46,11 +54,10 @@ namespace Core.Particles
             Size += SizeVel;
 
             Color = new Vector4(Color.X, Color.Y, Color.Z, Color.W - AlphaVel); // убавляем цвет. Кстати, цвет записан в Vector4, а не в Color, потому что: Color.R/G/B имеет тип Byte (от 0x00 до 0xFF), чтобы не проделывать лишней трансформации, используем float и Vector4
-
         }
 
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, RenderTarget2D render)
         {
 
             Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height); // область из текстуры: вся
